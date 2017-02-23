@@ -1,0 +1,35 @@
+Source: python-parse
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Cyril Bouthors <cyb@debian.org>
+Uploaders: Arthur Vuillard <arthur@hashbang.fr>,
+  Cyril Bouthors <cyril@boutho.rs>,
+  Cyril Bouthors <cyril@bouthors.org>
+Section: python
+Priority: optional
+Build-Depends: python-all (>= 2.6.6-3), debhelper (>= 7)
+Standards-Version: 3.9.4
+
+Package: python-parse
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+Description: Parse provides the reverse function for format().
+ Parse strings using a specification based on the Python format() syntax.
+ .
+    ``parse()`` is the opposite of ``format()``
+ .
+ The module is set up to only export ``parse()``, ``search()`` and
+ ``findall()`` when ``import *`` is used:
+ .
+ >>> from parse import *
+ .
+ From there it's a simple thing to parse a string:
+ .
+ >>> parse("It's {}, I love it!", "It's spam, I love it!")
+ <Result ('spam',) {}>
+ >>> _[0]
+ 'spam'
+ .
+ Or to search a string for some pattern:
+ .
+ >>> search('Age: {:d}\n', 'Name: Rufus\nAge: 42\nColor: red\n')
+ <Result (42,) {}>
